@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<section class="welcome-section">
+    <h2 class="handjet-uniquifier">Contacto</h2>
+    <p class="contact-text">Puedes contactarnos a través del siguiente formulario.</p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <div class="content-form">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-form-enviar">Enviar</button>
+    </form>
+    </div>
+    <br>
+    <a href="https://wa.me/1153855611" target="_blank" class="button-whatsapp"><img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp Logo">Envíanos un mensaje por WhatsApp</a>
+</section>
+{% endblock %}
